@@ -10,6 +10,8 @@ public:
 };
 
 /*
+## what to learn
+[solutions](https://leetcode.com/problems/distribute-candies/#/solutions)
 + min
 + size
 + unordered_set
