@@ -17,7 +17,13 @@ public:
 + unordered_set
     + insert()
     + constructor using range iterator
-+ sort vector
++ vector
+    + iteration
+        + :
+        + front()
+        + begin()
+        + size()
+    + sort
     + compare with [i-1] and decide whether to increase cnt
 + bitset
 */
