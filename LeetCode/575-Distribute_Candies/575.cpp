@@ -8,22 +8,3 @@ public:
         return min(kinds.size(), candies.size() / 2);
     }
 };
-
-/*
-## what to learn
-[solutions](https://leetcode.com/problems/distribute-candies/#/solutions)
-+ min
-+ size
-+ unordered_set
-    + insert()
-    + constructor using range iterator
-+ vector
-    + iteration
-        + :
-        + front()
-        + begin()
-        + size()
-    + sort
-    + compare with [i-1] and decide whether to increase cnt
-+ bitset
-*/
