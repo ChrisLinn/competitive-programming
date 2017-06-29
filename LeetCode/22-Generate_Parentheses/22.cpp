@@ -31,7 +31,7 @@ vector<string> down(vector<string> current,int x,int y,int n){
     x++;
     if (x>n||Y>n||(x+y)>2*n) {return current.clear();}
     else if ((x+y)==2*n) return current;
-    else return dfs(current,x,y)
+    else return dfs(current,x,y,n);
 }
 
 vector<string> right(vector<string> current,int x,int y,int n){
@@ -41,5 +41,5 @@ vector<string> right(vector<string> current,int x,int y,int n){
     y++;
     if (x>n||Y>n||(x+y)>2*n) {return current.clear();}
     else if ((x+y)==2*n) return current;
-    else return dfs(current,x,y);
+    else return dfs(current,x,y,n);
 }
