@@ -4,11 +4,11 @@ public:
         vector<string> result;
         vector<string> current;
         current.push_back("");
-        dfs(current,0,0);
+        dfs(current,0,0,n);
     }
 };
 
-vector<string> dfs(current,x,y){
+vector<string> dfs(vector<string> current,int x,int y,int n){
     vector<string> level_result;
 
     vector<string> down_result = down(current,x,y);
@@ -24,22 +24,22 @@ vector<string> dfs(current,x,y){
     return level_result;
 }
 
-vector<string> down(current,x,y){
+vector<string> down(vector<string> current,int x,int y,int n){
     for string in current {
         string +'(';
     }
     x++;
-    if (x>n||Y>n||(x+y)>2*n) {return current.clear()}
+    if (x>n||Y>n||(x+y)>2*n) {return current.clear();}
     else if ((x+y)==2*n) return current;
     else return dfs(current,x,y)
 }
 
-vector<string> right(current,x,y){
+vector<string> right(vector<string> current,int x,int y,int n){
     for string in current {
         string +')';
     }
     y++;
-    if (x>n||Y>n||(x+y)>2*n) {return current.clear()}
+    if (x>n||Y>n||(x+y)>2*n) {return current.clear();}
     else if ((x+y)==2*n) return current;
     else return dfs(current,x,y);
 }
