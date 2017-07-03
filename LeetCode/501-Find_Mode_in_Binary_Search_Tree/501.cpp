@@ -20,7 +20,7 @@ public:
     void getMaxFreq(TreeNode* r, int& mfq, int& pre, int& cnt) {
         if (!r) return;
         getMaxFreq(r->left, mfq, pre, cnt);
-        getMaxFreq(r->right, mfq=max(mfq,cnt), pre=r->val, ++(cnt*=(r->val==pre)));
+        getMaxFreq(r->right, mfq=max(mfq,cnt), pre=r->val, ++(cnt*=(r->val==pre)));//r->val==pre? ++cnt : cnt=1;
     }
     
     void getMode(TreeNode* r, const int mfq, int& pre, int& cnt) {
