@@ -25,7 +25,7 @@ public:
             node->next = addTwoNumbersC(node->next, NULL, value/10);
             return node;
         } else if(c>0) {
-            ListNode node = struct ListNode(c,NULL);
+            ListNode node = ListNode(c);
             return &node;
         } else {
             return NULL;
