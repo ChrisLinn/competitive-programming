@@ -25,8 +25,7 @@ public:
             node->next = addTwoNumbersC(node->next, NULL, value/10);
             return node;
         } else if(c>0) {
-            ListNode node = ListNode(c);
-            return &node;
+            return new ListNode(c);
         } else {
             return NULL;
         }
