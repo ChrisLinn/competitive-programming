@@ -11,21 +11,24 @@ public:
      */
     int hashCode(string &key, int HASH_SIZE) {
         // write your code here
-        int hashcode = 0;
+        long double hashcode = 0;
         int len = key.length();
     
         for (int i = 0; i < len; i++) {
-            hashcode += key[i] * pow(33, len-i-1);
+            // cout << "i - " << i << ", key[i] - " << key[i] << ", " << pow(33, len-i-1) << endl;
+            hashcode += key[i] * powl(33, (long double)(len-i-1));
         }
-    
-        hashcode = hashcode%HASH_SIZE;
+        
+        // cout << hashcode<<endl;
+        hashcode = fmod(hashcode, (long double) HASH_SIZE);
+        // cout << hashcode<<endl;
         return hashcode;
     }
 };
 
 int main() {
-    string str = "abcd";
-    int HASH_SIZE = 100;
+    string str = "abcdefghijklmnopqrstuvwxyz";
+    int HASH_SIZE = 2607;
     
     Solution sol;
     int hash = sol.hashCode(str, HASH_SIZE);
