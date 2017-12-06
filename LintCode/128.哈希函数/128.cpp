@@ -12,13 +12,16 @@ public:
     int hashCode(string &key, int HASH_SIZE) {
         // write your code here
         long long int hashcode = 0;
-        int len = key.length();
     
-        for (int i = 0; i < len; ++i) {
-            hashcode = (hashcode * 33 + key[i]) % HASH_SIZE;
+        // int len = key.length();
+        // for (int i = 0; i < len; ++i) {
+        //     hashcode = (hashcode * 33 % HASH_SIZE + key[i] % HASH_SIZE) % HASH_SIZE;
+        // }
+    
+        for (const auto& c : key) {
+            hashcode = (hashcode * 33 % HASH_SIZE + c % HASH_SIZE) % HASH_SIZE;
         }
         
-        hashcode = hashcode % HASH_SIZE;
         return hashcode;
     }
 };
