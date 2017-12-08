@@ -14,12 +14,27 @@ public:
         // write your code here
         int res = 0;
         
-        for (int exp = 0, base = 1; exp < 32; ++exp, base<<1) {
-            if (num & base) {
-                ++res;
-            }
+        // 和 res += num & 0x1 差不多，方向不同而已
+        // for (int exp = 0, base = 1; exp < 32; ++exp, base<<1) {
+        //     if (num & base) {
+        //         ++res;
+        //     }
+        // }
+        
+        for (int exp = 0; exp < 32; ++exp) {
+            // //感觉对负数不够直观
+            // if (num % 2) { 
+            //     ++res;
+            // }
+            // // num /= 2 不行
+            // num >> 1;
+
+            //还是这个好一些
+            res += num & 0x1;
+            num>>1;
         }
 
+        
         return res;
     }
 };
@@ -83,6 +98,14 @@ public:
     int countOnes(int num) {
         int count = 0;
 
+
+        // 原理:
+        // https://stackoverflow.com/questions/4678333/n-n-1-what-does-this-expression-do
+        //
+        // 如果是 2 的幂,那么正好只有 1 个 1, 做完之后变 0;
+        //
+        // 如果不是 2 的幂, 那么就会是类似 `0..010..010..`, 是好几个 2 不同幂之和, 
+        // 通过 `n & (n-1)` 能把最小的那个幂消去.
 
         for (; num; num &= num - 1) {
             ++count;
