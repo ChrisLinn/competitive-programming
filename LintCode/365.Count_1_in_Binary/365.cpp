@@ -13,7 +13,26 @@ public:
     int countOnes(int num) {
         // write your code here
         int res = 0;
-        int exp = 0;
+        
+        for (int exp = 0, base = 1; exp < 32; ++exp, base<<1) {
+            if (num & base) {
+                ++res;
+            }
+        }
+
+        return res;
+    }
+};
+
+class Solution1 {
+public:
+    /*
+     * @param num: An integer
+     * @return: An integer
+     */
+    int countOnes(int num) {
+        // write your code here
+        int res = 0;
         int isNeg = 0;
 
         if (num < 0) {
@@ -22,10 +41,13 @@ public:
         }
 
         while (num > 0) {
-            if (num % 2 != 0) {
+            // if (num % 2 != 0) {
+            if (num & 1 == 1) {
                 ++res;
             }
-            num /= 2;
+            num >>= 1;
+            // num = num>>1;
+            // num /= 2;
         }
 
         return res + isNeg;
