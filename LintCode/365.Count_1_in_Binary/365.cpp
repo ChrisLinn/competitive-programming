@@ -3,6 +3,7 @@
 #include <climits>
 using namespace std;
 
+
 class Solution {
 public:
     /*
@@ -30,6 +31,51 @@ public:
         return res + isNeg;
     }
 };
+
+
+
+class Solution2 {
+public:
+    int countOnes(int num) 
+    {
+        int counter=0;
+        for(int i=0;i<32;++i)
+        {
+            counter+=(num%2+2)%2;
+            num>>=1;
+        }
+        return counter;
+    }
+};
+
+
+
+class Solution3 {
+// Time:  O(logn) = O(32)
+// Space: O(1)
+public:
+    /**
+     * @param num: an integer
+     * @return: an integer, the number of ones in num
+     */
+    int countOnes(int num) {
+        int count = 0;
+
+
+        for (; num; num &= num - 1) {
+            ++count;
+        }
+
+        // while (num > 0) {
+        //     num = num & num - 1;
+        //     ++c;
+        // }
+
+        return count;
+    }
+};
+
+
 
 int main() {
     int num = -1;
