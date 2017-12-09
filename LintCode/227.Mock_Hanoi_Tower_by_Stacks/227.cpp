@@ -28,6 +28,9 @@ public:
      */
     void moveTopTo(Tower &t) {
         // Move the top disk of this tower to the top of t.
+        int disk = disks.top();
+        disks.pop();
+        t.add(disk);
     }
 
     /*
@@ -38,6 +41,15 @@ public:
      */
     void moveDisks(int n, Tower &destination, Tower &buffer) {
         // Move n Disks from this tower to destination by buffer tower
+        if (n < 1) {
+            return;
+        } else if(n == 1){
+            moveTopTo(destination);
+        }else{  
+            moveDisks(n - 1, buffer, destination);
+            moveTopTo(destination);
+            buffer.moveDisks(n - 1, destination, *this);
+        }
     }
 
     /*
