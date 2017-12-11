@@ -18,7 +18,7 @@ public:
      * @param root: A Tree
      * @return: Level order a list of lists of integer
      */
-    vector<vector<int>> levelOrder(TreeNode * root) {
+    vector<vector<int>> levelOrder1(TreeNode * root) {
         // write your code here
         vector<vector<int>> q;
 
@@ -47,5 +47,40 @@ public:
         }
 
         return q;
+    }
+
+
+
+    vector<vector<int>> levelOrder2(TreeNode *root) {
+        // write your code here
+        queue<TreeNode*> q;
+        vector<vector<int>> res;
+        vector<int> level;
+        if(!root)
+            return res;
+        
+        q.push(root); // emplace() will be better, save the temp var
+        q.push(NULL); // use NULL to denote the end of each level
+        
+        while(q.size()){
+            TreeNode* t = q.front();
+            q.pop();
+            if(t){
+                level.push_back(t->val);
+                if(t->left)
+                    q.push(t->left);
+                if(t->right)
+                    q.push(t->right);
+            }else{
+                res.push_back(level);
+                level.clear();
+                // or
+                // res.push_back(move(level));
+                
+                if(q.size())
+                    q.push(NULL);
+            }
+        }
+        return res;
     }
 };
