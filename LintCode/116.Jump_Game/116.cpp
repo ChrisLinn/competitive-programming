@@ -13,7 +13,7 @@ public:
         
         for (int i = 0; i < A.size(); ++i) {
             if (res[i]) {
-                for (int j = 1; j <= A[i]; ++j) {
+                for (int j = 1; j <= A[i] && (i+j) < A.size(); ++j) {
                     res[i+j] = true;
                 }
             }
