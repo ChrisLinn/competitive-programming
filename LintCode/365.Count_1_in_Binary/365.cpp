@@ -111,9 +111,9 @@ public:
             ++count;
         }
 
-        // while (num > 0) {
+        // while (num != 0) {
         //     num = num & num - 1;
-        //     ++c;
+        //     ++count;
         // }
 
         return count;
