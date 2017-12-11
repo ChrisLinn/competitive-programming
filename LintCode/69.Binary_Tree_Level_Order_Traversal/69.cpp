@@ -53,16 +53,17 @@ public:
 
     vector<vector<int>> levelOrder2(TreeNode *root) {
         // write your code here
-        queue<TreeNode*> q;
+        queue<TreeNode *> q;
         vector<vector<int>> res;
         vector<int> level;
         if(!root)
             return res;
         
-        q.push(root); // emplace() will be better, save the temp var
+        q.push(root); // emplace() will be better, save the temp var ?
         q.push(NULL); // use NULL to denote the end of each level
         
-        while(q.size()){
+        while(q.size()){  
+        // or  while(!q.empty()){
             TreeNode* t = q.front();
             q.pop();
             if(t){
@@ -82,5 +83,34 @@ public:
             }
         }
         return res;
+    }
+
+
+    vector<vector<int>> levelOrder(TreeNode *root) {
+        vector<vector<int>> result;
+        queue<TreeNode *> que;
+
+        if(!root)
+            return result;
+
+        que.emplace(root);
+        while (!que.empty()) {
+            vector<int> level;
+            int size = que.size();
+            for (int i = 0; i < size; ++i) {
+                auto *front = que.front();
+                que.pop();
+                level.emplace_back(front->val);
+                if (front->left != nullptr) {
+                    que.emplace(front->left);
+                }
+                if (front->right != nullptr) {
+                    que.emplace(front->right);
+                }
+            }
+            result.emplace_back(move(level));
+        }
+
+        return result;
     }
 };
