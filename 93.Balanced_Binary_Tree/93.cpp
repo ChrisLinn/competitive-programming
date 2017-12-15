@@ -56,4 +56,89 @@ public:
             return d;
         }
     }
+
+
+    int getHeight(TreeNode *root)
+    {
+        if(root==NULL)
+            return 0;
+        return max(getHeight(root->left),getHeight(root->right))+1;
+    }
 };
+
+
+class Solution1 
+{
+public:
+    bool isBalanced(TreeNode *root) 
+    {
+        if(root==NULL)
+            return true;
+        if(abs(getHeight(root->left)-getHeight(root->right))>1)
+            return false;
+        return isBalanced(root->left)&&isBalanced(root->right);
+    }
+    int getHeight(TreeNode *root)
+    {
+        if(root==NULL)
+            return 0;
+        return max(getHeight(root->left),getHeight(root->right))+1;
+    }
+};
+
+
+class Solution2 {
+public:
+    /**
+     * @param root: The root of binary tree.
+     * @return: True if this Binary tree is Balanced, or false.
+     */
+    bool isBalanced(TreeNode *root) {
+        // write your code here
+        int h;
+        return isBalHelper(root, h);
+    }
+    
+    bool isBalHelper(TreeNode *root, int &h){
+        if(!root){
+            h = 1;
+            return true;
+        }
+        int l_h = 0;
+        int r_h = 0;
+        bool l = isBalHelper(root->left, l_h);
+        bool r = isBalHelper(root->right, r_h);
+        h = max(l_h, r_h) + 1;
+        return l&&r&&abs(l_h-r_h)<=1;
+    }
+};
+
+
+class Solution3 {
+public:
+    /**
+     * @param root: The root of binary tree.
+     * @return: True if this Binary tree is Balanced, or false.
+     */
+    bool isBalanced(TreeNode *root) {
+        return isBalancedRecu(root).first;
+    }
+
+    pair<bool, int> isBalancedRecu(TreeNode *root) {
+        if (root == nullptr) {
+            return {true, 0};
+        }
+
+        pair<bool, int> left = isBalancedRecu(root->left);
+        pair<bool, int> right =  isBalancedRecu(root->right);
+
+        if (left.first && right.first && abs(left.second - right.second) <= 1) {
+            return {true, max(left.second, right.second) + 1};
+        }
+        else {
+            return {false, 0};
+        }
+    }
+};
+
+
