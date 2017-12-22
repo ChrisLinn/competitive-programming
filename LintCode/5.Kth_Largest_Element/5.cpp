@@ -13,6 +13,7 @@ public:
                     return a > b; 
                 }
             );
+        // or nth_element(nums.begin(), nums.begin() + k - 1, nums.end(), greater<int>());
         for (int a: nums) {
             cout<<a;
         }
