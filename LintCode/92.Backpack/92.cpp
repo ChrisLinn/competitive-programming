@@ -38,7 +38,7 @@ public:
                     mx = max(mx, j);
                 }
             }
-        }        
+        }
 
         return mx;
     }
@@ -59,7 +59,7 @@ public:
 
         canFulfill[0] = true;
 
-        // using first i+1 items 
+        // using first i+1 items
         for (int i = 0; i < nItems; ++i) {
             // backward so no need to store for the last turn
             for (int j = size; j>=A[i]; --j) {
