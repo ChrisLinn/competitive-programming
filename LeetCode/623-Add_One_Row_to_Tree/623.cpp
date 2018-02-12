@@ -9,6 +9,8 @@
  */
 
 #include <iostream>
+#include <vector>
+#include <queue>
 using namespace std;
 
 struct TreeNode {
@@ -23,18 +25,39 @@ public:
     TreeNode* addOneRow(TreeNode* root, int v, int d) {
         TreeNode* newTreeRoot = root;
 
-        if(d == 1) {
+        if(d > 1) {
+            dfs(root, v, d);
+        } else {
             newTreeRoot = new TreeNode(v);
             newTreeRoot->left = root;
-        } else {
-            bfs(root, v, d);
         }
 
         return root = newTreeRoot;
     }
 
-    void bfs(TreeNode* root, int v, int d) {
+    void dfs(TreeNode* root, int v, int d) {
 
+        if(d > 2) {
+            if(root->left) {
+                dfs(root->left, v, d-1);
+            }
+            if(root->right) {
+                dfs(root->right, v, d-1);
+            }
+        } else if(d == 2) {
+            TreeNode* newLeft = new TreeNode(v);
+            TreeNode* newRight = new TreeNode(v);
+
+            if(root->left) {
+                newLeft->left = root->left;
+            }
+            if(root->right) {
+                newRight->right = root->right;
+            }
+
+            root->left = newLeft;
+            root->right = newRight;
+        }
     }
 };
 
