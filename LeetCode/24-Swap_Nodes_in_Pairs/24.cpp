@@ -23,10 +23,10 @@ public:
 
         while(next) {
             prev->next = next;
-            cur->next = next->next;
             next->next = cur;
+            cur->next = next->next; //!
 
-            prev = cur;
+            prev = cur; //!
             cur = cur->next;
             next = cur?cur->next:nullptr;
         }
