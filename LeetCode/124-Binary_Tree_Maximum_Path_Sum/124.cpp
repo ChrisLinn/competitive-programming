@@ -30,7 +30,7 @@ private:
         int right = max(dfs(node->right), 0);
         int sub = max(left, right);
 
-        this->maxSum = max(this->maxSum, left + right + node->val);
+        this->maxSum = max(this->maxSum, left + right + node->val); //!
 
         return sub + node->val;
     }
